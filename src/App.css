@@ -1,0 +1,14 @@
+.fruit-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.fruit-display {
+    display: flex;
+    flex-direction: row;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
