@@ -12,19 +12,22 @@ function ArticleFruit({articleTitle, state, setState}) {
         <>
             <article className="fruit-display">
                 <h4>{articleTitle}</h4>
-                <Button
-                    buttonType="button"
-                    buttonClass="button"
-                    handleClick={() => counter(+1)}>
-                    +
-                </Button>
-                <p>{state}</p>
-                <Button
-                    buttonType="button"
-                    buttonClass="button"
-                    handleClick={() => counter(-1)}>
-                    -
-                </Button>
+                <div className="fruit-counter">
+                    <Button
+                        buttonType="button button-counter"
+                        buttonClass="button"
+                        handleClick={() => counter(+1)}>
+                        +
+                    </Button>
+                    <p className="fruit-amount">{state}</p>
+                    <Button
+                        buttonType="button button-counter"
+                        buttonClass="button"
+                        isDisabled={state === 0}
+                        handleClick={() => counter(-1)}>
+                        -
+                    </Button>
+                </div>
             </article>
 
         </>
