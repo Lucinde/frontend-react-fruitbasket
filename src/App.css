@@ -18,6 +18,9 @@ main {
 h1 {
     margin: 15px;
 }
+textarea {
+    margin-top:10px;
+}
 
 .container {
     display: flex;

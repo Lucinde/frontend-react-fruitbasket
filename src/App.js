@@ -3,6 +3,7 @@ import './App.css';
 import Button from "./components/Button";
 import ArticleFruit from "./components/ArticleFruit";
 import {useForm} from 'react-hook-form';
+import FormInput from "./components/FormInput";
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 
     function handleFormSubmit(data) {
         // geen preventDefault meer nodig, dit regelt Hook Form
-        console.log(data);
+        console.log(`Aardbeien: ${amountStrawberry} \nBananen: ${amountBanana} \nAppels: ${amountApple} \nKiwi's: ${amountKiwi} \n` , data);
     }
 
     return (
@@ -55,22 +56,34 @@ function App() {
                 </section>
                 <section className="container">
                     <form onSubmit={handleSubmit(handleFormSubmit)} className="form-details">
-                        <label htmlFor="firstname-field">
+                        <FormInput
+                            name="firstname"
+                            inputType="text"
+                            register={register}
+                        >
                             Voornaam
-                            <input type="text" id="firstname-field" {...register("firstname")}/>
-                        </label>
-                        <label htmlFor="lastname-field">
+                        </FormInput>
+                        <FormInput
+                            name="lastname"
+                            inputType="text"
+                            register={register}
+                        >
                             Achternaam
-                            <input type="text" id="lastname-field" {...register("lastname")}/>
-                        </label>
-                        <label htmlFor="age-field">
+                        </FormInput>
+                        <FormInput
+                            name="age"
+                            inputType="number"
+                            register={register}
+                        >
                             Leeftijd
-                            <input type="number" id="age-field" {...register("age")}/>
-                        </label>
-                        <label htmlFor="zip-field">
+                        </FormInput>
+                        <FormInput
+                            name="zip"
+                            inputType="text"
+                            register={register}
+                        >
                             Postcode
-                            <input type="text" id="zip-field" {...register("zip")}/>
-                        </label>
+                        </FormInput>
                         <label htmlFor="frequency-field">
                             Bezorgdagen
                             <select id="frequency-field" {...register("frequency")}>
@@ -81,11 +94,11 @@ function App() {
                         </label>
                         <div className="radio-button">
                             <label htmlFor="daytime">
-                                <input type="radio" id="daytime" {...register("time-field")}/>
+                                <input type="radio" id="daytime" value="daytime" {...register("delivery-time")}/>
                                 Overdag
                             </label>
                             <label htmlFor="evening">
-                                <input type="radio" id="daytime" {...register("time-field")}/>
+                                <input type="radio" id="daytime" value="evening" {...register("delivery-time")}/>
                                 's Avonds
                             </label>
                         </div>
@@ -93,19 +106,17 @@ function App() {
                             Opmerkingen
                             <textarea id="comments-field" cols="20" rows="10" {...register("comments")}></textarea>
                         </label>
-                        <label htmlFor="subscribe-field">
-                            <input type="checkbox" id="subscribe-field" {...register("subscribe")}/>
+                        <FormInput
+                            name="subscribe"
+                            inputType="checkbox"
+                            register={register}
+                        >
                             Ik ga akkoord met de voorwaarden
-                        </label>
+                        </FormInput>
                         <label htmlFor="submit-button">
                             <Button
                                 buttonType="submit"
                                 buttonClass="button"
-                                handleClick={() => console.log(`
-                                Aardbeien: ${amountKiwi}
-                                Bananen: ${amountBanana}
-                                Appels: ${amountApple}
-                                Kiwi's: ${amountKiwi}`)}
                             >
                                 Verzend
                             </Button>
