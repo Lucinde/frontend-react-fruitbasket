@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import Button from "./components/Button";
 import ArticleFruit from "./components/ArticleFruit";
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
     const [amountApple, setAmountApple] = useState(0);
     const [amountKiwi, setAmountKiwi] = useState(0);
 
-    const { register, handleSubmit } = useForm();
+    const {register, handleSubmit} = useForm();
 
     function handleFormSubmit(data) {
         // geen preventDefault meer nodig, dit regelt Hook Form
@@ -69,7 +69,7 @@ function App() {
                         </label>
                         <label htmlFor="zip-field">
                             Postcode
-                            <input type="number" id="zip-field" {...register("zip")}/>
+                            <input type="text" id="zip-field" {...register("zip")}/>
                         </label>
                         <label htmlFor="frequency-field">
                             Bezorgdagen
@@ -79,24 +79,36 @@ function App() {
                                 <option value="monthly">Monthly</option>
                             </select>
                         </label>
-                        <label htmlFor="daytime">
-                            <input type="radio" id="daytime" {...register("time-field")}/>
-                            Overdag
-                        </label>
-                        <label htmlFor="evening">
-                            <input type="radio" id="daytime" {...register("time-field")}/>
-                            's Avonds
-                        </label>
-                        <label htmlFor="comments-field">
+                        <div className="radio-button">
+                            <label htmlFor="daytime">
+                                <input type="radio" id="daytime" {...register("time-field")}/>
+                                Overdag
+                            </label>
+                            <label htmlFor="evening">
+                                <input type="radio" id="daytime" {...register("time-field")}/>
+                                's Avonds
+                            </label>
+                        </div>
+                        <label htmlFor="comments-field" className="comments">
                             Opmerkingen
-                            <textarea id="comments-field" cols="30" rows="10" {...register("comments")}></textarea>
+                            <textarea id="comments-field" cols="20" rows="10" {...register("comments")}></textarea>
                         </label>
                         <label htmlFor="subscribe-field">
                             <input type="checkbox" id="subscribe-field" {...register("subscribe")}/>
                             Ik ga akkoord met de voorwaarden
                         </label>
                         <label htmlFor="submit-button">
-                            <button type="submit">Verzend</button>
+                            <Button
+                                buttonType="submit"
+                                buttonClass="button"
+                                handleClick={() => console.log(`
+                                Aardbeien: ${amountKiwi}
+                                Bananen: ${amountBanana}
+                                Appels: ${amountApple}
+                                Kiwi's: ${amountKiwi}`)}
+                            >
+                                Verzend
+                            </Button>
                         </label>
 
                     </form>

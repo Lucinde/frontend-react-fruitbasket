@@ -61,12 +61,28 @@ header {
 }
 
 /*** form ***/
-
-.form {
-    display: flex;
-}
-
 .form-details {
     display: flex;
     flex-direction: column;
+}
+.form-details label {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0 8px 8px;
+}
+.form-details input[type=text],
+.form-details input[type=number],
+.form-details select {
+    width: 62%;
+}
+
+.comments {
+    flex-direction: column;
+}
+.radio-button {
+    display: flex;
+    align-items: center;
+}
+.form-details input[type=radio] {
+    margin-right: 5px;
 }
