@@ -22,6 +22,12 @@ textarea {
     margin-top:10px;
 }
 
+.error {
+    color: red;
+    font-style: italic;
+    text-align: right;
+}
+
 .container {
     display: flex;
     flex-direction: column;

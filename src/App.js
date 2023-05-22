@@ -12,7 +12,7 @@ function App() {
     const [amountApple, setAmountApple] = useState(0);
     const [amountKiwi, setAmountKiwi] = useState(0);
 
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: { errors }} = useForm();
 
     function handleFormSubmit(data) {
         // geen preventDefault meer nodig, dit regelt Hook Form
@@ -67,6 +67,11 @@ function App() {
                             name="lastname"
                             inputType="text"
                             register={register}
+                            validationSchema={{
+                                required: "Achternaam is verplicht"
+                            }}
+                            errors={errors}
+                            required
                         >
                             Achternaam
                         </FormInput>
@@ -113,6 +118,7 @@ function App() {
                         >
                             Ik ga akkoord met de voorwaarden
                         </FormInput>
+                        {/*<span className="error">{errors}</span>*/}
                         <label htmlFor="submit-button">
                             <Button
                                 buttonType="submit"
